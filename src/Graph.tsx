@@ -27,7 +27,14 @@ class Graph extends Component<IProps, {}> {
   table: Table | undefined;
 
   render() {
-    return React.createElement('perspective-viewer');
+    // Adding attributes to the perspective-viewer element
+    return React.createElement('perspective-viewer', {
+      view: 'y_line',
+      'column-pivots': '["stock"]',
+      'row-pivots': '["timestamp"]',
+      columns: '["top_ask_price"]',
+      aggregates: '{"stock":"distinct count","timestamp":"distinct count"}',
+    });
   }
 
   componentDidMount() {
